@@ -1,6 +1,7 @@
 package com.parliamentchallenge.merger.service.jaxb;
 
 import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @XmlRootElement(name = "personlista")
 @XmlAccessorType(XmlAccessType.FIELD)
+@EqualsAndHashCode
 public class SpeakersList {
 
     @XmlElement(name = "person")

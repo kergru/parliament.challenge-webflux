@@ -22,20 +22,20 @@ public class MergedResource {
     private final MergerService mergerService;
 
     @GetMapping("/{id}")
-    public Mono<SpeechResponse> getSpeech(@PathVariable String id) {
+    public Mono<MergedSpeechResponse> getSpeech(@PathVariable String id) {
         Mono<Speech> speech = mergerService.findOneAndMerge(id);
         return speech.map(this::mapToResponse);
     }
 
     @GetMapping("/search")
-    public Flux<SpeechResponse> search(
+    public Flux<MergedSpeechResponse> searchSpeeches(
             @RequestParam(name = "speakerId", required = false) String speakerId, @RequestParam(name = "party", required = false) String party) {
         Flux<Speech> speeches = mergerService.findAndMerge(speakerId, party);
         return speeches.map(this::mapToResponse);
     }
 
-    private SpeechResponse mapToResponse(Speech speech) {
-        return SpeechResponse.builder()
+    private MergedSpeechResponse mapToResponse(Speech speech) {
+        return MergedSpeechResponse.builder()
                 .uid(speech.getUid())
                 .speechDate(speech.getSpeechDate())
                 .speechSubject(speech.getSubject())

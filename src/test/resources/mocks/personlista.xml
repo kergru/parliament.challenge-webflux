@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<personlista systemdatum="2019-12-12 08:50:37" hits="1">
+    <person>
+        <hangar_guid>1c228d97-5efd-400c-93e5-46e653ee52b1</hangar_guid>
+        <sourceid>ef84acf4-4f56-45d9-9951-1c8ba4098302</sourceid>
+        <intressent_id>123</intressent_id>
+        <hangar_id>2343281</hangar_id>
+        <fodd_ar>1965</fodd_ar>
+        <kon>man</kon>
+        <efternamn>TESTSPEAKER</efternamn>
+        <tilltalsnamn>Hans</tilltalsnamn>
+        <sorteringsnamn>Wallmark,Hans</sorteringsnamn>
+        <iort></iort>
+        <parti>M</parti>
+        <valkrets>Skåne läns norra och östra</valkrets>
+        <status>Tjänstgörande riksdagsledamot</status>
+        <person_url_xml>http://data.riksdagen.se/person/ef84acf4-4f56-45d9-9951-1c8ba4098302</person_url_xml>
+        <bild_url_80>http://data.riksdagen.se/filarkiv/bilder/ledamot/ef84acf4-4f56-45d9-9951-1c8ba4098302_80.jpg</bild_url_80>
+        <bild_url_192>http://data.riksdagen.se/filarkiv/bilder/ledamot/ef84acf4-4f56-45d9-9951-1c8ba4098302_192.jpg</bild_url_192>
+        <bild_url_max>http://data.riksdagen.se/filarkiv/bilder/ledamot/ef84acf4-4f56-45d9-9951-1c8ba4098302_max.jpg</bild_url_max>
+        <personuppdrag>
+            <uppdrag>
+                <organ_kod>NR</organ_kod>
+                <roll_kod>Ledamot</roll_kod>
+                <ordningsnummer>7</ordningsnummer>
+                <status></status>
+                <typ>Riksdagsorgan</typ>
+                <from>2006-10-17</from>
+                <tom>2010-10-04</tom>
+                <uppgift>Nordiska rådets svenska delegation</uppgift>
+                <intressent_id>0980681611418</intressent_id>
+                <hangar_id>2343281</hangar_id>
+                <sortering>30</sortering>
+                <organ_sortering>300</organ_sortering>
+                <uppdrag_rollsortering>90</uppdrag_rollsortering>
+                <uppdrag_statussortering>90</uppdrag_statussortering>
+            </uppdrag>
+        </personuppdrag>
+        <personuppgift>
+            <uppgift>
+                <kod>Officiell e-postadress</kod>
+                <uppgift>hans.wallmark[på]riksdagen.se</uppgift>
+                <typ>eadress</typ>
+                <intressent_id>0980681611418</intressent_id>
+                <hangar_id>2343281</hangar_id>
+            </uppgift>
+        </personuppgift>
+    </person>
+</personlista>

@@ -8,7 +8,7 @@ import org.springframework.hateoas.RepresentationModel;
 @Getter
 @Setter
 @Builder
-public class SpeechResponse extends RepresentationModel<SpeechResponse> {
+public class MergedSpeechResponse extends RepresentationModel<MergedSpeechResponse> {
 
     private String uid;
 

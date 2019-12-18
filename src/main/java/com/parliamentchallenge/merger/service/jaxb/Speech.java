@@ -1,5 +1,6 @@
 package com.parliamentchallenge.merger.service.jaxb;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -13,6 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Setter
 @XmlRootElement(name = "anforande")
 @XmlAccessorType(XmlAccessType.FIELD)
+@EqualsAndHashCode
 @ToString
 public class Speech {
 
@@ -20,7 +22,7 @@ public class Speech {
     private String docId;
 
     @XmlElement(name = "anforande_nummer")
-    private String speechId;
+    private String speechNumber;
 
     @XmlElement(name = "dok_datum")
     private String speechDate;
@@ -39,6 +41,6 @@ public class Speech {
     }
 
     public String getUid() {
-        return docId + "-" + speechId;
+        return docId + "-" + speechNumber;
     }
 }
