@@ -21,13 +21,13 @@ public class MergedResource {
 
     private final MergerService mergerService;
 
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = "application/hal+json;charset=UTF-8")
     public Mono<MergedSpeechResponse> getSpeech(@PathVariable String id) {
         Mono<Speech> speech = mergerService.findOneAndMerge(id);
         return speech.map(this::mapToResponse);
     }
 
-    @GetMapping("/search")
+    @GetMapping(value = "/search", produces = "application/json;charset=UTF-8")
     public Flux<MergedSpeechResponse> searchSpeeches(
             @RequestParam(name = "speakerId", required = false) String speakerId, @RequestParam(name = "party", required = false) String party) {
         Flux<Speech> speeches = mergerService.findAndMerge(speakerId, party);

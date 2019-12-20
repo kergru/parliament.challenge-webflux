@@ -20,7 +20,6 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.doReturn;
 import static org.springframework.hateoas.Link.REL_SELF;
-import static org.springframework.http.MediaType.APPLICATION_JSON;
 
 @ExtendWith(SpringExtension.class)
 @WebFluxTest(controllers = MergedResource.class)
@@ -38,9 +37,9 @@ class MergedResourceTest {
 
         webTestClient.get()
                 .uri("/speeches/1")
-                .accept(APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
+                .expectHeader().contentType("application/hal+json;charset=UTF-8")
                 .expectBody(MergedSpeechResponse.class)
                 .value(speechResponse -> speechResponse.getUid(), equalTo("H70949-226"))
                 .value(speechResponse -> speechResponse.getLink(REL_SELF).get().getHref(), equalTo("http://localhost:8080/speeches/H70949-226"));
@@ -52,9 +51,9 @@ class MergedResourceTest {
 
         webTestClient.get()
                 .uri("/speeches/search?speakerId=x&party=y")
-                .accept(APPLICATION_JSON)
                 .exchange()
                 .expectStatus().isOk()
+                .expectHeader().contentType("application/json;charset=UTF-8")
                 .expectBodyList(MergedSpeechResponse.class)
                 .value(speechResponse -> assertSpeeches(speechResponse));
     }

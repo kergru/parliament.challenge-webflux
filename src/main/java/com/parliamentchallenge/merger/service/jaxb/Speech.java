@@ -16,7 +16,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @EqualsAndHashCode
 @ToString
-public class Speech {
+public class Speech implements Comparable<Speech> {
 
     @XmlElement(name = "dok_id")
     private String docId;
@@ -42,5 +42,14 @@ public class Speech {
 
     public String getUid() {
         return docId + "-" + speechNumber;
+    }
+
+    @Override
+    public int compareTo(Speech speech) {
+        int retVal = this.getDocId().compareTo(speech.getDocId());
+        if (retVal == 0) {
+            retVal = Integer.parseInt(speech.speechNumber) - Integer.parseInt(this.getSpeechNumber());
+        }
+        return retVal;
     }
 }

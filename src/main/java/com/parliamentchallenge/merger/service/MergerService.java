@@ -25,7 +25,6 @@ public class MergerService {
         return speechService.find(speakerId, party)
                 .flatMapIterable(i -> i)
                 .flatMap(speech -> Mono.just(speech)
-                        .zipWith(speakerService.findOne(speech.getSpeakerId()), Speech::addSpeaker));
+                        .zipWith(speakerService.findOne(speech.getSpeakerId()), Speech::addSpeaker)).sort();
     }
-
 }

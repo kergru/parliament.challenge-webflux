@@ -20,14 +20,26 @@ public class SpeechService {
     private final WebClient webClient;
 
     public Mono<List<Speech>> find(String speakerId, String party) {
+        String query = getQuery(speakerId, party);
         return webClient.get()
-                .uri("/anforandelista/?sz=10&utformat=xml")
+                .uri("/anforandelista/?" + query)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_XML_VALUE)
                 .accept(MediaType.TEXT_XML)
                 .acceptCharset(Charset.forName("UTF-8"))
                 .retrieve()
                 .bodyToMono(SpeechesList.class)
                 .map(speechesList -> speechesList.getSpeeches() != null ? speechesList.getSpeeches() : Collections.<Speech>emptyList());
+    }
+
+    private String getQuery(String speakerId, String party) {
+        StringBuilder query = new StringBuilder("sz=10");
+        if (party != null) {
+            query.append("&parti=" + party);
+        }
+        if (speakerId != null) {
+            query.append("&iid=" + speakerId);
+        }
+        return query.toString();
     }
 
     public Mono<Speech> findOne(String id) {

@@ -2,9 +2,23 @@
 
 Webflux implementation
 
-## TODO
-* tests
-* swagger
+## How to use:
+start with docker:
+docker run -p 8080:8080  kgrdocker/parliament-challenge-webflux
+
+search all(10) speeches:
+http://localhost:8080/speeches/search?speakerId=<>&party=<>
+
+
+follow self link in result to show single speech
+
+
+## Lessons learned
+* reactive web programming
+* UnitTests with MockWebServer and @WebFluxTest
+* ComponenTests with WireMock, async MockMvc
+* right now no Swagger support for WebFlux available
+
 
 
 
