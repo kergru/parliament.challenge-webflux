@@ -3,17 +3,18 @@ package com.parliamentchallenge.merger.resource;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.core.io.FileSystemResourceLoader;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import reactor.blockhound.BlockHound;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
@@ -37,7 +38,11 @@ class MergedResourceCT {
     @Autowired
     private MockMvc mockMvc;
 
-    private FileSystemResourceLoader fileSystemResourceLoader = new FileSystemResourceLoader();
+    @BeforeAll
+    static void init() {
+        BlockHound.install();
+    }
+
 
     @BeforeEach
     void configureSystemUnderTest() {
@@ -64,13 +69,13 @@ class MergedResourceCT {
                 .withBodyFile("xml/anforandelista.xml")
         ));
 
-        wireMock.register(get(urlPathMatching("/anforandelista/anforande/.*")).willReturn(aResponse()
+        wireMock.register(get(urlPathMatching("/anforande/.*")).willReturn(aResponse()
                 .withStatus(200)
                 .withHeader("Content-Type", "text/xml;charset=UTF-8")
                 .withBodyFile("xml/anforande.xml")
         ));
 
-        wireMock.register(get(urlPathMatching("/personlista/.*")).willReturn(aResponse()
+        wireMock.register(get(urlPathMatching("/person/.*")).willReturn(aResponse()
                 .withStatus(200)
                 .withHeader("Content-Type", "text/xml;charset=UTF-8")
                 .withBodyFile("xml/personlista.xml")
