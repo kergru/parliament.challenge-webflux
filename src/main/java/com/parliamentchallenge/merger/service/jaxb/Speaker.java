@@ -18,6 +18,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @ToString
 public class Speaker {
 
+    public static Speaker NO_SPEAKER = new Speaker();
+
     @XmlElement(name = "efternamn")
     private String name;
 

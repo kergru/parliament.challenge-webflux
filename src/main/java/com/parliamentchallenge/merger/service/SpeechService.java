@@ -44,12 +44,11 @@ public class SpeechService {
 
     public Mono<Speech> findOne(String id) {
         return webClient.get()
-                .uri("/anforandelista/anforande/" + id)
+                .uri("/anforande/" + id)
                 .header(HttpHeaders.CONTENT_TYPE, MediaType.TEXT_XML_VALUE)
                 .accept(MediaType.TEXT_XML)
                 .acceptCharset(Charset.forName("UTF-8"))
                 .retrieve()
-                .bodyToMono(SpeechesList.class)
-                .map(speechesList -> speechesList.getSpeeches() != null ? speechesList.getSpeeches().get(0) : null);
+                .bodyToMono(Speech.class);
     }
 }
